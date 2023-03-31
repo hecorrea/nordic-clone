@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./public/server.js",
     "build": "NODE_ENV=development webpack",
-    "dist": "NODE_ENV=production webpack"
+    "dist": "NODE_ENV=production webpack",
+    "start-dev": "npm run build && npm run start"
   },
   "keywords": [],
   "author": "",

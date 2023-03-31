@@ -2,8 +2,12 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/about', (req, res) => {
-  res.send('About api');
+router.get('/user', (req, res) => {
+  res.json({
+    name: 'Hernan Correa',
+    email: 'hernan.correa@mercadolibre.com.co',
+    site: 'MLA',
+  });
 });
 
 export default router;

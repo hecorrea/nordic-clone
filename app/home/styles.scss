@@ -1,15 +1,51 @@
+* {
+  font-weight: bold;
+  font-style: italic;
+  font-family: fantasy;
+}
 body {
-  background-color: rgb(84, 208, 224);
+  background-color: rgb(235, 235, 235);
 }
 
-p {
-  color: rgba(255, 0, 0, 0.959);
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  margin: 50px auto;
+  max-width: 500px;
+  padding: 20px;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  transform: translate(0px, 200%);
 }
 
-.Panel {
-  color: rgb(43, 255, 0);
+.card.light {
+  background-color: #fff;
+  color: #333;
 }
 
-.Panel2 {
-  color: rgb(255, 0, 212);
+.card.dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h2 {
+  margin: 0;
+}
+
+.card-header button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.card-body p {
+  margin: 10px 0;
 }

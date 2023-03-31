@@ -1,12 +1,44 @@
+* {
+  font-weight: bold;
+  font-style: italic;
+  font-family: fantasy; }
+
 body {
-  background-color: #54d0e0; }
+  background-color: #ebebeb; }
 
-p {
-  color: rgba(255, 0, 0, 0.959); }
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 50px auto;
+  max-width: 500px;
+  padding: 20px;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  transform: translate(0px, 200%); }
 
-.Panel {
-  color: #2bff00; }
+.card.light {
+  background-color: #fff;
+  color: #333; }
 
-.Panel2 {
-  color: #ff00d4; }
+.card.dark {
+  background-color: #333;
+  color: #fff; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.card-header h2 {
+  margin: 0; }
+
+.card-header button {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 16px; }
+
+.card-body p {
+  margin: 10px 0; }
 
