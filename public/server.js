@@ -106,7 +106,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api */ \"./api/index.js\");\n/* harmony import */ var _app_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/server */ \"./app/server/index.js\");\n/* harmony import */ var _midlewares__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./midlewares */ \"./midlewares/index.js\");\n\nvar app = express__WEBPACK_IMPORTED_MODULE_0___default()();\n\n\n\nvar port = 3003;\napp.use('/api', _api__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\napp.use(_midlewares__WEBPACK_IMPORTED_MODULE_3__.sharedReferences);\napp.use('/', _app_server__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\napp.use('/static', express__WEBPACK_IMPORTED_MODULE_0___default()[\"static\"]('public'));\napp.listen(port, function () {\n  console.log(\"Listening at http://localhost:\".concat(port));\n});\n\n//# sourceURL=webpack://nordic-clone/./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./api */ \"./api/index.js\");\n/* harmony import */ var _app_server__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/server */ \"./app/server/index.js\");\n/* harmony import */ var _midlewares__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./midlewares */ \"./midlewares/index.js\");\n\nvar app = express__WEBPACK_IMPORTED_MODULE_0___default()();\n\n\n\nvar port = 3003;\napp.use('/api', _api__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\napp.use(_midlewares__WEBPACK_IMPORTED_MODULE_3__.sharedReferences);\napp.use('/', _app_server__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\napp.use('/static', express__WEBPACK_IMPORTED_MODULE_0___default()[\"static\"]('public'));\napp.use(_midlewares__WEBPACK_IMPORTED_MODULE_3__.errorMidleware);\napp.listen(port, function () {\n  console.log(\"Listening at http://localhost:\".concat(port));\n});\n\n//# sourceURL=webpack://nordic-clone/./index.js?");
+
+/***/ }),
+
+/***/ "./midlewares/errorMiddleware.js":
+/*!***************************************!*\
+  !*** ./midlewares/errorMiddleware.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"errorMidleware\": () => (/* binding */ errorMidleware)\n/* harmony export */ });\nvar errorMidleware = function errorMidleware(req, res, next) {\n  res.send('Error: rendering failed');\n};\n\n//# sourceURL=webpack://nordic-clone/./midlewares/errorMiddleware.js?");
 
 /***/ }),
 
@@ -116,7 +126,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var expr
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"sharedReferences\": () => (/* binding */ sharedReferences)\n/* harmony export */ });\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./render */ \"./midlewares/render.js\");\n\nvar sharedReferences = function sharedReferences(req, res, next) {\n  res.render = (0,_render__WEBPACK_IMPORTED_MODULE_0__.render)(req, res, next);\n  next();\n};\n\n//# sourceURL=webpack://nordic-clone/./midlewares/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"errorMidleware\": () => (/* reexport safe */ _errorMiddleware__WEBPACK_IMPORTED_MODULE_1__.errorMidleware),\n/* harmony export */   \"sharedReferences\": () => (/* binding */ sharedReferences)\n/* harmony export */ });\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./render */ \"./midlewares/render.js\");\n/* harmony import */ var _errorMiddleware__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errorMiddleware */ \"./midlewares/errorMiddleware.js\");\n\n\nvar sharedReferences = function sharedReferences(req, res, next) {\n  res.render = (0,_render__WEBPACK_IMPORTED_MODULE_0__.render)(req, res, next);\n  next();\n};\n\n//# sourceURL=webpack://nordic-clone/./midlewares/index.js?");
 
 /***/ }),
 

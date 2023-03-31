@@ -1,6 +1,5 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './index.js',
