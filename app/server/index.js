@@ -1,7 +1,5 @@
 import Home from '../home/index';
 
-console.log('Server is running');
-
 const express = require('express');
 
 const router = express.Router();
