@@ -13,6 +13,7 @@ const Page = ({ state, module, children }) => {
         `}
       </ScriptTag>
       <ScriptTag src={`/static/${module}.bundle.js`} async defer/>
+      <ScriptTag src={`/static/vendor.bundle.js`} async defer/>
       {children}
     </>
   )

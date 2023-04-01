@@ -1,8 +1,9 @@
 import express from 'express';
-const app = express();
 import apiRouter from './api';
 import appRouter from './app/server';
 import { errorMidleware, sharedReferences } from './midlewares';
+
+const app = express();
 
 const port = 3003;
 

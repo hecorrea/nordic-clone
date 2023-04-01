@@ -18,15 +18,15 @@ const Home = (props) => {
       module={MODULE.HOME}
     >
       <div className={`card ${theme}`}>
-      <div className="card-header">
-        <h2>{name}</h2>
-        <button onClick={toggleTheme}>Toggle Theme</button>
+        <div className="card-header">
+          <h2>{name}</h2>
+          <button onClick={toggleTheme}>Toggle Theme</button>
+        </div>
+        <div className="card-body">
+          <p>Email: {email}</p>
+          <p>Site: {site}</p>
+        </div>
       </div>
-      <div className="card-body">
-        <p>Email: {email}</p>
-        <p>Site: {site}</p>
-      </div>
-    </div>
     </Page>
   );
 };
