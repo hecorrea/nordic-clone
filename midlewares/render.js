@@ -1,10 +1,10 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
-export const render = (req, res, next) => (Component, props, options) => {
+export const render = (req, res, next) => (Component, props, options = {}) => {
   const html = renderToString(React.createElement(Component, props));
   
-  const { layout: { title = 'My App' } } = options;
+  const title = options?.layout?.title || 'Nordic Clone';
  
   const renderedHtml = `
     <html>

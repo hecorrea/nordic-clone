@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./public/server.js",
-    "build": "NODE_ENV=development webpack",
-    "dist": "NODE_ENV=production webpack",
-    "start-dev": "npm run build && npm run start",
+    "build": "webpack",
+    "dist": "webpack",
+    "start-dev": "NODE_ENV=development npm run build && npm run start",
     "serve": "NODE_ENV=development webpack-dev-server --hot"
   },
   "keywords": [],
@@ -19,10 +19,12 @@
     "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-side-effect": "^2.1.2"
+    "react-side-effect": "^2.1.2",
+    "require-context": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-modules-commonjs": "^7.21.2",
     "@babel/plugin-transform-runtime": "^7.21.0",
     "@babel/preset-env": "^7.14.2",
@@ -40,6 +42,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "glob": "^9.3.4",
     "html-webpack-plugin": "^5.3.1",
     "jest": "^27.0.1",
     "lodash": "^4.17.21",

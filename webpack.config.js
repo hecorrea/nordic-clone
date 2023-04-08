@@ -36,6 +36,14 @@ const clientConfig = {
       filename: '[name].bundle.css',
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [MiniCSSExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -55,12 +63,13 @@ const serverConfig = {
   output: {
     filename: 'server.js',
     path: path.resolve(__dirname, 'public'),
+    chunkFilename: '[name].js',
   },
   externals: [nodeExternals()],
 };
 
 module.exports = (env) => {
-  if (env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     clientConfig.devtool = 'source-map';
     serverConfig.devtool = 'source-map';
   }

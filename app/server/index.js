@@ -4,10 +4,12 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/about', (req, res) => {
-  res.send('About app');
-});
-
 router.use('/home', Home);
+
+const notFound = (req, res) => {
+  res.status(404).send('Not found');
+};
+
+router.use(notFound);
 
 export default router;
