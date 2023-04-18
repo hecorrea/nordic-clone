@@ -1,7 +1,21 @@
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 
 const routesRootDirectory = path.resolve(__dirname, '..', 'app', 'nordic-pages');
+
+const renderPage = (routeModule, { fileNameJS, fileNameCSS }) => async (req, res) => {
+  const props = routeModule?.getServerSideProps ? (
+    await routeModule.getServerSideProps(req, res)
+  ) : {};
+  
+  res.render(routeModule.default, props, {
+    bundle: {
+      js: fileNameJS,
+      styles: fileNameCSS ? fileNameCSS : undefined,
+    }
+  } );
+}
 
 const checkIfHasSlash = (path) => {
   const shashRegex = /^\//;
@@ -10,10 +24,6 @@ const checkIfHasSlash = (path) => {
   }
   return path;
 } 
-
-const renderPage = (routeModule, { fileName }) => (req, res) => {
-  res.render(routeModule.default);
-}
 
 function createRoutesFromDirectory(directoryPath) {
   const router = express.Router();
@@ -33,15 +43,26 @@ function createRoutesFromDirectory(directoryPath) {
       
       const fileNameWithoutExtension = relativePath.replace(/\.[^/.]+$/, '');
      
-      const routePath = isIndexFile 
+      const routePath = checkIfHasSlash(isIndexFile 
         ? routeRelativePath 
-        : fileNameWithoutExtension;
+        : fileNameWithoutExtension);
 
       const routeModule = files(fileName);
 
+      const nordicPageName = `app_nordic-pages_${routePath.replace(/\//g, '_')}`;
+
+      const removeLastSlash = filePath.replace(/\/[^/]*$/, '');
+      const fileSCSSName = `${removeLastSlash}/styles.scss`;
+
+      const filesRoutes = { fileNameJS: `${nordicPageName}.bundle.js` };
+      if (fs.existsSync(fileSCSSName)) {
+        filesRoutes['fileNameCSS'] = `${nordicPageName}_css.bundle.css`;
+      }
+
       return router.get(
-        checkIfHasSlash(routePath),
-        renderPage(routeModule, { fileName }));
+        routePath,
+        renderPage(routeModule, filesRoutes)
+      );
     }
   });
   return router;

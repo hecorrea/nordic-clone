@@ -2,6 +2,8 @@ const path = require('path');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
 const { merge } = require('webpack-merge');
+const AddEntryPlugin = require('./addEntryPoint');
+const HydratePlugin = require('./hydrate');
 
 const commonConfig = {
   mode: process.env.NODE_ENV,
@@ -26,6 +28,7 @@ const commonConfig = {
 const clientConfig = {
   entry: {
     home: './app/client/home.js',
+    'home.css': './app/home/styles.scss',
   },
   output: {
     filename: '[name].bundle.js',
@@ -35,6 +38,14 @@ const clientConfig = {
     new MiniCSSExtractPlugin({
       filename: '[name].bundle.css',
     }),
+    new AddEntryPlugin('./app/nordic-pages'),
+    new HydratePlugin('./app/nordic-pages'),
+    // new HydratePlugin({
+    //   pages: [
+    //     { name: 'home', componentPath: 'home/view/index.js' },
+    //     { name: 'about', componentPath: 'about/view/index.js' },
+    //   ]
+    // })
   ],
   module: {
     rules: [
