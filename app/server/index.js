@@ -1,4 +1,4 @@
-import Home from '../home/index';
+import Home from '../pages/home/index';
 
 const express = require('express');
 

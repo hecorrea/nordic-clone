@@ -16,9 +16,9 @@ class AddEntryPlugin {
   }
 
   apply(compiler) {
-    compiler.hooks.entryOption.tap('AddEntryPlugin', (context, entry) => {
+    compiler.hooks.afterEmit.tapAsync('AddEntryPlugin', (compilation, callback) => {
       const files = glob.sync(path.join(this.folderPath, '**/*.{js,ts,jsx}'));
-
+      const entry = {};
       files.forEach((fileName) => {
         const relativePath = path.relative(this.folderPath, fileName);
         const routeRelativePath = `/${path.dirname(relativePath)}`;
@@ -48,7 +48,9 @@ class AddEntryPlugin {
 
         }
       });
-      
+
+      compiler.options.entry = Object.assign(entry, compiler.options.entry);
+      callback();
     });
   }
 }

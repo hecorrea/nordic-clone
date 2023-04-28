@@ -28,7 +28,7 @@ const commonConfig = {
 const clientConfig = {
   entry: {
     home: './app/client/home.js',
-    'home.css': './app/home/styles.scss',
+    'home.css': './app/pages/home/styles.scss',
   },
   output: {
     filename: '[name].bundle.js',
@@ -38,14 +38,8 @@ const clientConfig = {
     new MiniCSSExtractPlugin({
       filename: '[name].bundle.css',
     }),
-    new AddEntryPlugin('./app/nordic-pages'),
     new HydratePlugin('./app/nordic-pages'),
-    // new HydratePlugin({
-    //   pages: [
-    //     { name: 'home', componentPath: 'home/view/index.js' },
-    //     { name: 'about', componentPath: 'about/view/index.js' },
-    //   ]
-    // })
+    new AddEntryPlugin('./app/nordic-pages'),
   ],
   module: {
     rules: [

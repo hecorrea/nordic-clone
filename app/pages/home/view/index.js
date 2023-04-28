@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import Page from '../../core/Page';
-import { MODULE } from '../../helper/constans';
-import '../styles.scss';
+import Page from '../../../core/Page';
+import { MODULE } from '../../../helper/constans';
 
 const Home = (props) => {
   const { name, email, site } = props;
