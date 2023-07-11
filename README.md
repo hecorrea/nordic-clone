@@ -1,6 +1,5 @@
 ## Nordic Clone
-
-[![asciicast](https://user-images.githubusercontent.com/108137544/235030890-b02f6670-5091-4cdd-80be-3cb3e9f342b3.png)](https://user-images.githubusercontent.com/108137544/235031198-dd67b986-d31b-4f83-b301-53abaed184df.mov)
+https://github.com/melisource/fury_credits-admin-consumer/assets/122929430/c8dbb7c2-97e8-42a5-9b9a-0ff3db15983d
 
 
 ### Installation & execution 
